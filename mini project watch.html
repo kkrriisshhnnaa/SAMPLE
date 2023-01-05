@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: bisque;
+        }
+        div{ border: 5px solid black; 
+            width: 220px;
+            height: max-content;
+            color: red;
+            background-color: aquamarine;
+            position: absolute;
+            margin-left: 480px;
+            margin-top: 170px;
+        }
+    </style>
+</head>
+<body onload="digitalClock()">
+    <div>
+    <center>
+        <h1 id="A"></h1>
+        <h2 id="B"></h2>
+        <h3 id="C"></h3>
+    </center>
+    </div>
+    <script>
+        function digitalClock()
+        {
+            var timezone=new Date()
+            var dy=timezone.getDay()
+            switch(dy)
+            {
+                case 0: dy='SUNDAY';
+                break;
+                case 1: dy='MONDAY'
+                //document.getElementById('digitalClock').style.backgroundImage = "url(./WhatsApp Image 2022-12-12 at 15.00.30.jpeg)";
+                //document.getElementById('A').style.backgroundImage = "url(./WhatsApp Image 2022-12-12 at 15.00.30.jpeg)";
+                break;
+                case 2: dy='TUESDAY'
+                //document.getElementById('digitalClock').style.backgroundImage = "url('./WhatsApp Image 2022-12-12 at 15.00.30.jpeg')";
+                //document.getElementById('A').style.backgroundImage = "url('./WhatsApp Image 2022-12-12 at 15.00.30.jpeg')";
+                break;
+                case 3: dy='WEDNESDAY'
+                break;
+                case 4: dy='THURDAY'
+                break;
+                case 5: dy='FRIDAY'
+                break;
+                case 6: dy='SATURDAY'
+                break;
+            }
+            document.getElementById('A').innerHTML=dy;
+            var dd=timezone.getDate()
+            var mon=timezone.getMonth()
+            switch(mon)
+            {
+                case 0: mon='JAN'
+                break;
+                case 1: mon='FEB'
+                break;
+                case 2: mon='MAR'
+                break;
+                case 3: mon='APRIL'
+                break;
+                case 4: mon='MAY'
+                break;
+                case 5: mon='JUNE'
+                break;
+                case 6: mon='JULY'
+                break;
+                case 7: mon='AUGUST'
+                break;
+                case 8: mon='SEPT'
+                break;
+                case 9: mon='OCT'
+                break;
+                case 10: mon='NOV'
+                break;
+                case 11: mon='DEC'
+                break;
+            }
+            var yyyy=timezone.getFullYear()
+            var date=dd+ " / " + mon + " / " + yyyy
+            document.getElementById('B').innerHTML=date
+            var hh=timezone.getHours()
+            //if(hh>12)
+            //{
+            //   hh-=12 
+            //}
+            var min=timezone.getMinutes()
+            var ss=timezone.getSeconds()
+            var am_pm = timezone.getHours();
+            if (am_pm >= 12 && am_pm <= 24) {
+                am_pm = "PM"
+            }
+            else if (am_pm >= 1 && am_pm <= 11){
+                am_pm = "AM"
+            }
+            var time=hh + " : " + min + " : " + ss + " " + am_pm;
+            document.getElementById('C').innerHTML= time;
+            var update=setTimeout(function(){digitalClock(),1000})
+        }
+       
+    </script>
+</body>
+</html>
